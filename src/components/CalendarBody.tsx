@@ -80,6 +80,7 @@ interface CalendarBodyProps<T extends ICalendarEventBase> {
   eventsAreSorted?: boolean
   timeslots?: number
   hourComponent?: HourRenderer
+  eventOverlapping?: boolean
 }
 
 function _CalendarBody<T extends ICalendarEventBase>({
@@ -118,6 +119,7 @@ function _CalendarBody<T extends ICalendarEventBase>({
   eventsAreSorted = false,
   timeslots = 0,
   hourComponent,
+  eventOverlapping,
 }: CalendarBodyProps<T>) {
   const scrollView = React.useRef<ScrollView>(null)
   const { now } = useNow(!hideNowIndicator)
@@ -207,6 +209,7 @@ function _CalendarBody<T extends ICalendarEventBase>({
           maxHour={maxHour}
           minHour={minHour}
           hours={hours.length}
+          eventOverlapping={eventOverlapping}
         />
       )
     },
@@ -222,6 +225,7 @@ function _CalendarBody<T extends ICalendarEventBase>({
       maxHour,
       minHour,
       hours.length,
+      eventOverlapping,
     ],
   )
 

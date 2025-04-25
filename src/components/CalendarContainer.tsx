@@ -154,6 +154,7 @@ export interface CalendarContainerProps<T extends ICalendarEventBase> {
   timeslots?: number
   hourComponent?: HourRenderer
   scheduleMonthSeparatorStyle?: TextStyle
+  eventOverlapping?: boolean
 }
 
 function _CalendarContainer<T extends ICalendarEventBase>({
@@ -226,6 +227,7 @@ function _CalendarContainer<T extends ICalendarEventBase>({
   timeslots = 0,
   hourComponent,
   scheduleMonthSeparatorStyle = {},
+  eventOverlapping = false,
 }: CalendarContainerProps<T>) {
   // To ensure we have proper effect callback, use string to date comparision.
   const dateString = date?.toString()
@@ -464,6 +466,7 @@ function _CalendarContainer<T extends ICalendarEventBase>({
         eventsAreSorted={eventsAreSorted}
         timeslots={timeslots}
         hourComponent={hourComponent}
+        eventOverlapping={eventOverlapping}
       />
     </React.Fragment>
   )
